@@ -1,0 +1,808 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            footer#main-footer {
+  background: #262626;
+  padding: 60px 0 30px 0;
+  color: #e6e6e6;
+  font-size: 11px;
+  line-height: 1.4em;
+}
+footer#main-footer .logo {
+  margin-bottom: 15px;
+}
+footer#main-footer a,
+footer#main-footer h1,
+footer#main-footer h2,
+footer#main-footer h3,
+footer#main-footer h4,
+footer#main-footer h5 {
+  color: #fff;
+}
+footer#main-footer .form-control {
+  background: #121212;
+  border-color: #000;
+  color: #fff;
+}
+footer#main-footer .form-control:focus {
+  border-color: #ed8323;
+}
+.list-footer > li {
+  margin-bottom: 5px;
+}
+.list-footer > li > a:hover {
+  text-decoration: underline;
+}
+.footer-links {
+  list-style: none;
+  font-size: 10px;
+  text-align: center;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+}
+.footer-links > li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.footer-links > li > a {
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+  color: #fff;
+}
+.footer-links > li > a:hover {
+  text-decoration: underline;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.footer-social {
+  position: absolute;
+  bottom: 50px;
+  text-align: center;
+  width: 100%;
+}
+.footer-social > li {
+  display: inline-block;
+  margin: 0 7px;
+}
+
+
+
+
+            .container{
+                float: left;
+                position: relative;
+                top: 40px;
+{#                left: 40px;#}
+                left: 120px;
+                margin-left: 20px;
+                padding-right: 20px;
+
+            }
+            .wrap{
+                display: inline-block;
+            }
+            .dog_details{
+                //border: dashed #801E2D thin;
+                width: 37%;
+                min-height: 395px;
+{#                background-color:rgba(232,232,232,1);#}
+                background-color: white;
+                margin: 2em auto;
+                margin-right: 3em;
+                display: inline-block;
+                float: right;
+                box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.75);
+            }
+{#            .loading{#}
+{#                margin: 12em 0em;#}
+{#                position: relative;#}
+{#                left: -60px;#}
+{#            }#}
+{#            @media(max-width: 900px){#}
+{#                .dog_details{#}
+{#                    margin: 35em 25em;#}
+{#                }#}
+{#            }#}
+            
+        </style>
+        <title>Dogspoter</title>
+        <!-- custom-theme -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- //custom-theme -->
+
+
+{#          <link href="{% static 'fileupload/css1/styles.css' %}" type="text/css" rel="stylesheet">#}
+{#         <link href="{% static 'fileupload/css1/mystyles.css' %}" type="text/css" rel="stylesheet">#}
+{#         <link href="{% static 'fileupload/css1/icomoon.css' %}" type="text/css" rel="stylesheet">#}
+{#         <link href="{% static 'fileupload/css1/font-awesome.css' %}" type="text/css" rel="stylesheet">#}
+         <link href="{% static 'fileupload/css1/bootstrap.css' %}" type="text/css" rel="stylesheet">
+
+
+
+
+        <link href="{% static 'fileupload/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{% static 'fileupload/css/tabs.css' %}" type="text/css" rel="stylesheet">
+        <link href="{% static 'fileupload/css/tabstyles.css' %}" type="text/css" rel="stylesheet">
+        <link href="{% static 'fileupload/css/component.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <script src="{% static 'fileupload/js/modernizr.custom.js' %}"></script>
+        <script src="{% static 'fileupload/js/jquery-1.10.2.js' %}"></script>
+        <link href="http://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&amp;subset=latin-ext" rel="stylesheet">
+
+
+
+
+    </head>
+    <body class="agileits">
+    <p id="lat" hidden ></p>
+    <p id="lng" hidden ></p>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header" style="padding-bottom:20px;">
+
+                <a class="navbar-brand" href="#" style="font-size: 35px;"><img src="../../static/fileupload/images/logo.png" style="padding-bottom:20px;max-width: 75px;max-height: 75px;">DogSpotter</a>
+            </div>
+{#            <ul class="nav navbar-nav">#}
+{#            <li class="active"><a href="#">Home</a></li>#}
+{#            <li><a href="#">Page 1</a></li>#}
+{#            <li><a href="#">Page 2</a></li>#}
+{#            <li><a href="#">Page 3</a></li>#}
+{#            </ul>#}
+        </div>
+    </nav>
+        <!---728x90--->
+        <div class="main wrap">
+            <section>
+                <div class="tabs tabs-style-iconfall">
+                    <nav>
+                        <ul>
+                            <li class="tab-current"><a class="icon icon-upload" href="#section-iconfall-1"><span>Upload</span></a></li>
+                            <li class=""><a class="icon icon-box" href="#section-iconfall-2"><span>URL</span></a></li>
+                            <li class=""><a class="icon icon-camera" href="#section-iconfall-3"><span>Camera</span></a></li>
+
+                        </ul>
+                    </nav>
+                    <div class="content-wrap">
+                        <section id="section-iconfall-1" class="content-current">
+                            <div class="wrapper">
+                                <div class="drop">
+                                    <div class="cont" style=" margin-top: 5%;">
+                                        <i class="fa fa-cloud-upload"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="62px" height="62px" viewBox="0 0 548.176 548.176" style="enable-background:new 0 0 548.176 548.176;" xml:space="preserve">
+                                            <g>
+                                            <path d="M524.326,297.352c-15.896-19.89-36.21-32.782-60.959-38.684c7.81-11.8,11.704-24.934,11.704-39.399   c0-20.177-7.139-37.401-21.409-51.678c-14.273-14.272-31.498-21.411-51.675-21.411c-18.083,0-33.879,5.901-47.39,17.703   c-11.225-27.41-29.171-49.393-53.817-65.95c-24.646-16.562-51.818-24.842-81.514-24.842c-40.349,0-74.802,14.279-103.353,42.83   c-28.553,28.544-42.825,62.999-42.825,103.351c0,2.474,0.191,6.567,0.571,12.275c-22.459,10.469-40.349,26.171-53.676,47.106   C6.661,299.594,0,322.43,0,347.179c0,35.214,12.517,65.329,37.544,90.358c25.028,25.037,55.15,37.548,90.362,37.548h310.636   c30.259,0,56.096-10.711,77.512-32.12c21.413-21.409,32.121-47.246,32.121-77.516C548.172,339.944,540.223,317.248,524.326,297.352   z M362.729,289.648c-1.813,1.804-3.949,2.707-6.42,2.707h-63.953v100.502c0,2.471-0.903,4.613-2.711,6.42   c-1.813,1.813-3.949,2.711-6.42,2.711h-54.826c-2.474,0-4.615-0.897-6.423-2.711c-1.804-1.807-2.712-3.949-2.712-6.42V292.355   H155.31c-2.662,0-4.853-0.855-6.563-2.563c-1.713-1.714-2.568-3.904-2.568-6.566c0-2.286,0.95-4.572,2.852-6.855l100.213-100.21   c1.713-1.714,3.903-2.57,6.567-2.57c2.666,0,4.856,0.856,6.567,2.57l100.499,100.495c1.714,1.712,2.562,3.901,2.562,6.571   C365.438,285.696,364.535,287.845,362.729,289.648z" fill="#a4aebb"/>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            </svg></i>
+{#                                        <div class="tit">#}
+{#                                            Drag &amp; Drop#}
+{#                                        </div>#}
+                                        <div class="desc">
+                                            Drag image here or click to browse
+                                        </div>
+{#                                        <div class="browse">#}
+{#                                            click here to browse#}
+{#                                        </div>#}
+                                    </div>
+                                    <output id="list"></output>
+{#                                    <input type="file" name="files[]" id="files">#}
+                                    <form id="form" method="post" class="form-horizontal" enctype="multipart/form-data"> {% csrf_token %}
+
+                                        <input type="file" name="myimage" id="id_image">
+
+                                         {% for field in form %}
+                                             <div class="col-sm-10">{{ field }}</div>
+                                         {% endfor %}
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <section id="section-iconfall-2" class=""><div class="jTermau_searchform">
+                                <div class="jTermau_searchformContainer">  
+                                    <input type="text" class="jTermau_textInput" placeholder="Paste the image URL here...">
+                                    <button onclick="docpy();" id="upload"  class="jTermau_sendButton">
+                                        <span>Upload</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="section-iconfall-3" class=""><p></p></section>
+
+                    </div><!-- /content -->
+                </div><!-- /tabs -->
+
+            </section>
+        </div>
+{#        <div class="loading col-md-1">#}
+{#            <img id="paste" src="../../static/fileupload/images/search1.gif"style="max-height: 60px; max-width:80px;"/>#}
+{#        </div>#}
+            <div class="dog_details" >
+                <h1 id="paste1"  style="font-size: larger;">Upload an image to recognize the first dog.</h1>
+                <img id="load" src="../../static/fileupload/images/search1.gif" class="img-responsive" style="padding-top:95px;margin:auto;display:none;"/>
+                <img id="paste"  src="" class="img-responsive" style="padding-top:5px;margin:auto;max-height: 300px;"/>
+{#                <h1 style="font-size: large;text-align: justify">Origin: United Kingdom, Scotland, England, Ireland, Wales</h1>#}
+{#                <h1 style="font-size: large; text-align: justify"> Herding dog breed developed in the Scottish border.</h1>#}
+{#                <h1 style="font-size: large; text-align: justify">Life span: 10 – 17 years</h1>#}
+
+            </div>
+
+
+
+
+
+        <div class="clear"></div>
+        <div id="notifier">
+{#            {% if context %}#}
+{#                    <img src="{{ uploaded.image.url }}">#}
+{#                <h1 style="color: white;font-size: large">{{ context }}Here to print the URL</h1>#}
+{#            {% endif %}#}
+{#            {% for i in mylist %}#}
+{#            {{ i }},#}
+{#            {% endfor %}#}
+
+        </div>
+
+{#        <ul>#}
+{#            {% for f in all_files %}#}
+{#              <li><a href="/fileupload/{{ f.id }}/">{{ f.filename }}</a></li>#}
+{#                <li><a href="{% url 'fileupload:detail' f.id %}">{{ f.filename }}</a></li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#        <ul>#}
+{#            {% for f in all_files %}#}
+{#              <li><a href="/fileupload/{{ f.id }}/">{{ f.filename }}</a></li>#}
+{#                <li><a href="{% url 'fileupload:detail' f.id %}">{{ f.filename }}</a></li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+        <!---728x90--->
+
+        <!---728x90--->
+
+{#        <div class="row row-wrap">#}
+{#            <div class="col-md-2">#}
+{#                <div class="thumb">#}
+{#                    <a class="hover-img" href="#">#}
+{#                        <img class=" img-responsive img-rounded" width="200px" height="160px" src="C:\Users\CsKJsK\Desktop\DogDetecter\dff.jpg"/>#}
+{#                        <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">#}
+{#                            <div class="text-small">#}
+{#                                <h5>Learn more...</h5>#}
+{#                                <p>Kochi</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+        <div class="container" style="position: relative;left:12%;" >
+            <div class="row" id="appendData">
+
+{#                <div style="" class="col-xs-12 col-sm-6 col-md-2">#}
+{#				<div class="thumbnail" >#}
+{#					<img style="min-width:155px;min-height:90px;" src="http://placehold.it/700x350&text=1" class="img-responsive">#}
+{#					<div class="caption">#}
+{#						<div class="row">#}
+{#						   <div style="margin:0px;padding: 0px;" class="col-md-5 col-sm-8 col-xs-8">#}
+{#								<h5 style="margin-left:5px;text-align: justify;"><label style="color: #0b0b0b;margin:0px;text-align: justify; padding: 0px;">Rottweiler</label></h5>#}
+{#    						</div>#}
+{#    						<div class="col-md-6 col-sm-4 col-xs-4 price">#}
+{#    							<h6 style="margin:0px;"><label>Yesterday</label></h6>#}
+{#							</div>#}
+{#    						</div>#}
+{#    						<div class="row">#}
+{#    						<p style="margin-left:5px;text-align: justify;">Hiton town Area, gale city</p>#}
+{#                            <h6 style="margin-left:5px;margin-right:5px;text-align: justify;"><label style="color: darkgrey;margin:0px;text-align: justify; padding: 0px;">Hiton town Area, gale city</label></h6>#}
+{#						    </div>#}
+{#    						<div style="margin-top: 10px;" class="row">#}
+{#							<div class="col-md-4 col-sm-4 col-xs-4 price">#}
+{#    							<h3 style="margin:5px auto;"><label style="font-size: larger; color: goldenrod;margin:0px;text-align: justify; padding: 0px;">$1</label></h3>#}
+{#							</div>#}
+{#							<div class="col-md-8 col-sm-8 col-xs-8" style="margin: 0px;padding-left: 0px;">#}
+{#								<a href="#" style="width: 100%;" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Learn more</a>#}
+{#    						</div>#}
+{#    					    </div>#}
+{#						<p> </p>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+
+
+
+
+
+{#                <div class="col-md-2 col-sm-4 col-xs-7">#}
+{#                    <a href="#">#}
+{#                    <img style="" class="img-responsive img-thumbnail" src="C:\Users\CsKJsK\Desktop\collie1.jpg"/>#}
+{#                    </a>#}
+{#                </div>#}
+{#                <div class="col-md-2 col-sm-4 col-xs-7">#}
+{#                    <a href="#">#}
+{#                    <img class="img-responsive img-thumbnail" src="C:\Users\CsKJsK\Desktop\collie2.jpg"/>#}
+{#                    </a>#}
+{#                </div>#}
+{#                <div class="col-md-2 col-sm-4 col-xs-7">#}
+{#                    <a href="#">#}
+{#                    <img style="height:115px;" class="img-responsive img-thumbnail" src="C:\Users\CsKJsK\Desktop\collie3.jpg"/>#}
+{#                    </a>#}
+{#                </div>#}
+{#                <div class="col-md-2 col-sm-4 col-xs-7">#}
+{#                    <a href="#">#}
+{#                    <img class="img-responsive img-thumbnail" src="C:\Users\CsKJsK\Desktop\collie4.jpg"/>#}
+{#                    </a>#}
+{#                </div>#}
+{#                 <div class="col-md-2 col-sm-4 col-xs-7">#}
+{#                    <img style="height:115px;"  class="img-responsive img-thumbnail" src="C:\Users\CsKJsK\Desktop\collie5.jpg"/>#}
+{#                </div>#}
+{#                <div class="col-md-2 col-sm-4 col-xs-7">#}
+{#                    <img style="height:115px;"  class="img-responsive img-thumbnail" src="../../static/fileupload/images/icon-more.png"/>#}
+{#                    <span>Rottweiersssssssssssssssss</span>#}
+{#                    <span>$250</span>#}
+{#                </div>#}
+            </div>
+        </div>
+
+{#    for googe custom search   #}
+{#    <div >#}
+{#        <br>#}
+{#        <br>#}
+{#        <br>#}
+{#        <br>#}
+{#        <br>#}
+{#        <br><br><br>#}
+{##}
+{#<script>#}
+{#  (function() {#}
+{#    var cx = '002591415660268445858:4ess5j_6bgm';#}
+{#    var gcse = document.createElement('script');#}
+{#    gcse.type = 'text/javascript';#}
+{#    gcse.async = true;#}
+{#    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;#}
+{#    var s = document.getElementsByTagName('script')[0];#}
+{#    s.parentNode.insertBefore(gcse, s);#}
+{#  })();#}
+{#</script>#}
+{#<gcse:search></gcse:search>#}
+{#    </div>#}
+
+
+{#    <script>#}
+{#function gcseCallback() {#}
+{#  if (document.readyState != 'complete')#}
+{#    return google.setOnLoadCallback(gcseCallback, true);#}
+{#  google.search.cse.element.render({gname:'gsearch', div:'results', tag:'searchresults-only', attributes:{linkTarget:''}});#}
+{#  var element = google.search.cse.element.getElement('gsearch');#}
+{#  element.execute('labrador');#}
+{#{;#}
+{#window.__gcse = {#}
+{#  parsetags: 'explicit',#}
+{#  callback: gcseCallback#}
+{#{;#}
+{#(function() {#}
+{#  var cx = '002591415660268445858:4ess5j_6bgm';#}
+{#  var gcse = document.createElement('script');#}
+{#  gcse.type = 'text/javascript';#}
+{#  gcse.async = true;#}
+{#  gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +#}
+{#    '//www.google.com/cse/cse.js?cx=' + cx;#}
+{#  var s = document.getElementsByTagName('script')[0];#}
+{#  s.parentNode.insertBefore(gcse, s);#}
+{#{)();#}
+{##}
+{#var element = google.search.cse.element.getElement('gsearch');#}
+{#  element.execute('doberman');#}
+{#</script>#}
+{##}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+{#    <br>#}
+{#    <br><br><br>#}
+{#<div id="results"></div>#}
+{#    <footer id="main-footer" style="display: block;bottom: 0px;width: 100%;height:35%;margin-top: 80%;position: relative;">#}
+{#            <div class="container">#}
+{#                <div class="row row-wrap">#}
+{#                    <div class="col-md-3">#}
+{#                        <a class="logo" href="index.html">#}
+{#                            <img src="img/logo.png" alt="Image Alternative text" title="Image Title" width="50px" height="50px" />#}
+{#                        </a>#}
+{#                        <p class="mb20">Booking, reviews , reservation , movie information , actor profiles , advices on theatres and lots more!</p>#}
+{#                        <ul class="list list-horizontal list-space">#}
+{#                            <li>#}
+{#                                <a class="fa fa-facebook box-icon-normal round animate-icon-bottom-to-top" href="#"></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="fa fa-twitter box-icon-normal round animate-icon-bottom-to-top" href="#"></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="fa fa-google-plus box-icon-normal round animate-icon-bottom-to-top" href="#"></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="fa fa-linkedin box-icon-normal round animate-icon-bottom-to-top" href="#"></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="fa fa-pinterest box-icon-normal round animate-icon-bottom-to-top" href="#"></a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-md-3">#}
+{#                        <h4>Newsletter</h4>#}
+{#                        <form>#}
+{#                            <label>Enter your E-mail Address</label>#}
+{#                            <input type="text" class="form-control">#}
+{#                            <p class="mt5"><small>*We Never Send Spam</small>#}
+{#                            </p>#}
+{#                            <input type="submit" class="btn btn-primary" value="Subscribe">#}
+{#                        </form>#}
+{#                    </div>#}
+{#                    <div class="col-md-2">#}
+{#                        <ul class="list list-footer">#}
+{#                            <li><a href="#">About US</a>#}
+{#                            </li>#}
+{#                            <li><a href="#">Press Centre</a>#}
+{#                            </li>#}
+{#                            <li><a href="#">Best Price Guarantee</a>#}
+{#                            </li>#}
+{#                            <li><a href="#">Travel News</a>#}
+{#                            </li>#}
+{#                            <li><a href="#">Jobs</a>#}
+{#                            </li>#}
+{#                            <li><a href="#">Privacy Policy</a>#}
+{#                            </li>#}
+{#                            <li><a href="#">Terms of Use</a>#}
+{#                            </li>#}
+{#                            <li><a href="#">Feedback</a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                    <div class="col-md-4">#}
+{#                        <h4>Have Questions?</h4>#}
+{#                        <h4 class="text-color">+91-9447338850</h4>#}
+{#                        <h4><a href="#" class="text-color">support@catchmyseat.com</a></h4>#}
+{#                        <p>24/7 Dedicated Customer Support</p>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#        </footer>#}
+    <input type="hidden" name="ih" />
+{#    <img src="https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg" name="tryimg" />#}
+{#    <a href="https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg" download="w3logo">GGG</a>#}
+    </body>
+
+{#    <script src="../../static/fileupload/js/cbpFWTabs.js"></script>#}
+    <script src="{% static 'fileupload/js/cbpFWTabs.js' %}"></script>
+    <script>
+        (function () {
+
+            [].slice.call(document.querySelectorAll('.tabs')).forEach(function (el) {
+                new CBPFWTabs(el);
+            });
+
+        })();
+
+        var drop = $("input");
+        drop.on('dragenter', function (e) {
+            $(".drop").css({
+                "border": "4px dashed #09f",
+                "background": "rgba(0, 153, 255, .05)"
+            });
+            $(".cont").css({
+                "color": "#09f"
+            });
+        }).on('dragleave dragend mouseout drop', function (e) {
+            $(".drop").css({
+                "border": "3px dashed #DADFE3",
+                "background": "transparent"
+            });
+            $(".cont").css({
+                "color": "#8E99A5"
+            });
+        });
+
+
+{#        var f;#}
+{#        function handleFileSelect(evt) {#}
+{#            alert("going to get files");#}
+{#            var files = evt.target.files; // FileList object#}
+{##}
+{#            // Loop through the FileList and render image files as thumbnails.#}
+{#            for (var i = 0, f; f = files[i]; i++) {#}
+{##}
+{#                // Only process image files.#}
+{#                if (!f.type.match('image.*')) {#}
+{#                    continue;#}
+{#                }#}
+{##}
+{#                var reader = new FileReader();#}
+{##}
+{#                // Closure to capture the file information.#}
+{#                reader.onload = (function (theFile) {#}
+{#                    return function (e) {#}
+{#                        // Render thumbnail.#}
+{#                        var span = document.createElement('span');#}
+{#                        span.innerHTML = ['<img class="thumb" src="', e.target.result,#}
+{#                            '" title="', escape(theFile.name), '"/>'].join('');#}
+{#                        document.getElementById('list').insertBefore(span, null);#}
+{#                    };#}
+{#                })(f);#}
+{##}
+{#                // Read in the image file as a data URL.#}
+{#                reader.readAsDataURL(f);#}
+{##}
+{#            }#}
+{#        }#}
+
+{#        $('#files').change(handleFileSelect);#}
+    </script>
+
+            <script>
+{#            document.getElementById("upload").onclick = function () {#}
+{#                img = document.createElement('img');#}
+{#                src = 'https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg';#}
+{#                img.src = src;#}
+{#                img.name = "tryimg";#}
+{#                document.body.appendChild(img);#}
+{#                inp = document.getElementsByName("myimage");#}
+{#                imgSrc = document.getElementsByName("tryimg");#}
+{#                inp[0].value = imgSrc[0].getAttribute("src");#}
+{##}
+{#                $(function() {#}
+{#                    $('form').submit(upload(event));#}
+{#                });#}
+{#            }#}
+            document.getElementById("id_image").onchange = function() {
+                $(function() {
+                    document.getElementById('load').style.display = 'block';
+                     $('#paste1').html("Uploading...");
+                    if(document.getElementById('paste').getAttribute('src')!=""){
+                        $('#paste').attr('src', '');
+                    }
+                    $('form').submit(upload(event));
+                });
+            };
+             window.onload = function () {
+                document.getElementById("id_image").value = null;
+            };
+
+{#            $(function() {#}
+{#                $('form').submit(upload);#}
+{#            });#}
+            function upload(event) {
+                event.preventDefault();
+{#                alert($('input[type=file]')[0].files[0]);#}
+{#                $('#form').ajaxSubmit(options);#}
+{#                alert('ss');#}
+{#                var data1 = $('input[type=file]')[0].files[0];#}
+
+
+                //FormData Creation
+                formdata = new FormData();
+                formdata.append('image', $('input[type=file]')[0].files[0]);
+                formdata.append("lat",document.getElementById('lat').innerHTML);
+                formdata.append("lng",document.getElementById('lng').innerHTML);
+                //latlng="latval"
+                //alert(document.getElementById('location').innerHTML);
+
+
+
+{#                formdata.append('image', $('input[type=file]')[0].files[0]);#}
+            //alert('Going to execute');
+                $.ajax({
+                    url: 'process/',
+                    type: 'POST',
+                    enctype: 'multipart/form-data',
+                    data: formdata,
+                    cache: false,
+                    processData: false,
+                    contentType: false
+                }).done(function( responseMsg ) {
+                    $('#gsc-i-id1').val(responseMsg.context);
+                    $('.gsc-search-button-v2').trigger('click');
+                    $('#paste1').html(responseMsg.context);
+                    $('#gsc-i-id1').css('visibility','hidden');
+                    $('.gsc-search-button-v2').css('visibility','hidden');
+                    document.getElementById('paste').src = responseMsg.path;
+                    $('.gsc-result-info-container').hide();
+                    $('.gsc-adBlock').hide();
+                    $('.gsc-adBlock').css("display", "none");
+                    $('#master-1').hide();
+                    $('.gcsc-branding').css("display", "none");
+                    $('.gsc-cursor-page').hide();
+                    $('.gsc-cursor-page').css("display", "none");
+                    $('.gsc-cursor-page').css("display", "none");
+                    $( ".gs-image-box.gs-web-image-box.gs-web-image-box-portrait" ).css( "width", "150px" );
+                    $( ".gs-image-box.gs-web-image-box.gs-web-image-box-portrait" ).css( "height", "150px" );
+                    $(".gs-web-image-box-portrait img.gs-image").css("max-height", "150px");
+                    $(".gs-web-image-box-portrait img.gs-image").css("max-width", "150px");
+
+                    $( "#appendData" ).empty();
+
+                    for(i = 0; i < 5; i++) {
+{#                        $( "#appendData" ).append("<div class='col-md-2 col-sm-4 col-xs-7'><a target='_blank' href='"+ responseMsg.Matrix[i][7]+ "'><img style='max-width:135px;max-height:135px;min-width:135px;min-height:135px;' class='img-responsive img-thumbnail' src='"+ responseMsg.Matrix[i][6]+ "'/></a></div>");#}
+                        $( "#appendData" ).append('<div style="" class="col-xs-12 col-sm-6 col-md-2"><div class="thumbnail" ><img style="max-width:155px;max-height:110px;min-height:110px;" src="'+ responseMsg.Matrix[i][6]+ '" class="img-responsive"><div class="caption">' +
+                            '<div style="margin:0px;padding: 0px;" class="col-md-5 col-sm-8 col-xs-8"><h5 style="margin-left:-10px;text-align: justify;"><label style="white-space:nowrap;width: 10em;overflow: hidden;text-overflow: ellipsis; color: #0b0b0b;margin:0px;text-align: justify; padding: 0px;">'+ responseMsg.Matrix[i][1]+ '</label></h5></div>' +
+                            '</div><div class="row"><h6 style="margin-left:12px;margin-right:12px;text-align: justify;"><label style="height:46px;width: 10em;overflow: hidden; color: darkgrey;margin:0px;text-align: justify; padding: 0px;">'+ responseMsg.Matrix[i][5]+ ','+ responseMsg.Matrix[i][4]+ '</label></h6></div><div class="row"><h6 style="margin-left:12px;margin-right:12px;text-align: justify;"><label style="white-space:nowrap;width: 10em;overflow: hidden;text-overflow: ellipsis; color: #darkgrey;margin:0px;text-align: justify; padding: 0px;">Posted: '+ responseMsg.Matrix[i][3]+ '</label></h6>' +
+                            '</div><div style="margin-top: 10px;" class="row"><div class="col-md-4 col-sm-4 col-xs-4 price"><h3 style="margin:5px auto;"><label style="white-space:nowrap;width: 10em;overflow: hidden;font-size: larger; color: goldenrod;margin:0px;text-align: justify; padding: 0px;">'+ responseMsg.Matrix[i][2]+ '</label></h3>' +
+                            '</div><div class="col-md-10 col-sm-8 col-xs-8" style="margin-left: 23px;padding-left: 0px;"><a href="'+ responseMsg.Matrix[i][7]+ '" target="_blank" style="width: 100%;" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Learn more</a>' +
+                            '</div></div><h6 style="margin-left:12px;margin-right:12px;text-align: justify;"><label style="white-space:nowrap;width: 10em;overflow: hidden;text-overflow: ellipsis; color: #darkgrey;margin:0px;text-align: justify; padding: 0px;">'+responseMsg.Matrix[i][0]+'Km'+'</label></h6></div></div></div>');
+                    }
+{#                    $( "#appendData" ).append("<div class='col-md-2 col-sm-4 col-xs-7'><a target='_blank' href='"+ responseMsg.url+ "'><img style='max-width:135px;max-height:135px;min-width:135px;min-height:135px;' class='img-responsive img-thumbnail' src='../../static/fileupload/images/icon-more.png'/></a></div>");#}
+                    $( "#appendData" ).append('<div style="" class="col-xs-12 col-sm-6 col-md-2"><div class="thumbnail" ><img style="max-width:155px;max-height:110px;min-height:110px;" src="../../static/fileupload/images/Gumtree_Logo.jpg" class="img-responsive"><div class="caption">' +
+                            '<div style="margin:0px;padding: 0px;" class="col-md-5 col-sm-8 col-xs-8"><h5 style="margin-left:-10px;text-align: justify;"><label style="white-space:nowrap;width: 10em;overflow: hidden;text-overflow: ellipsis; color: #0b0b0b;margin:0px;text-align: justify; padding: 0px;">More on Gumtree</label></h5></div>' +
+                            '</div><div class="row"><h6 style="margin-left:12px;margin-right:12px;text-align: justify;"><label style="width: 10em;overflow: hidden; color: darkgrey;margin:0px;text-align: justify; padding: 0px;">www.gumtree.com</label></h6></div><div class="row"><h6 style="margin-left:12px;margin-right:12px;text-align: justify;"><label style="width: 10em;overflow: hidden; color: darkgrey;margin:0px;text-align: justify; padding: 0px;">Find more simier dogs</label></h6>' +
+                            '</div><div style="margin-top: 10px;" class="row"><div class="col-md-4 col-sm-4 col-xs-4 price"><h3 style="margin:5px auto;"><label style="white-space:nowrap;width: 10em;overflow: hidden;font-size: large; color: goldenrod;margin:0px;text-align: justify; padding: 0px;">101 Ads</label></h3>' +
+                            '</div><div class="col-md-10 col-sm-8 col-xs-8" style="margin-left: 23px;padding-left: 0px;"><a href="'+ responseMsg.url + '" target="_blank" style="width: 100%;" class="btn btn-warning btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Find more</a>' +
+                            '</div></div><p> </p></div></div></div>');
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#    						<div class="col-md-6 col-sm-4 col-xs-4 price">#}
+{#    							<h6 style="margin:0px;"><label>Yesterday</label></h6>#}
+{#							</div>#}
+
+
+{#    						<p style="margin-left:5px;text-align: justify;">Hiton town Area, gale city</p>#}
+
+
+
+
+
+
+
+
+
+
+                });
+                return false;
+
+{#                $('#form').ajaxForm(function(options) {#}
+{#                alert("Thank you for your comment!");#}
+{#            });#}
+{#                $('#form').ajaxForm(options);#}
+            }
+{#            $(document).ready(function() {#}
+{#            // bind 'myForm' and provide a simple callback function#}
+{#            $('#form').ajaxForm(function() {#}
+{#                alert("Thank you for your comment!");#}
+{#            });#}
+{#            });#}
+
+{#            $(document).ready(function() {#}
+{#                alert('ready');#}
+{#             var options = {#}
+{#                    url: 'process/',#}
+{#                    success:    function() {#}
+{#                        alert('Thanks for your comment!');#}
+{#                    }#}
+{#                };#}
+{##}
+{##}
+{#            });#}
+{#             $('form').submit(function() {#}
+{#                alert('going to submit')#}
+{#                $(this).ajaxSubmit(options);#}
+{#                return false;#}
+{#            });#}
+                $.ajaxSetup({
+     beforeSend: function(xhr, settings) {
+         function getCookie(name) {
+             var cookieValue = null;
+             if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                     var cookie = jQuery.trim(cookies[i]);
+                     // Does this cookie string begin with the name we want?
+                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                         break;
+                     }
+                 }
+             }
+             return cookieValue;
+         }
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+         }
+     }
+});
+
+
+        </script>
+    <script type="text/javascript">
+        function docpy() {
+{#            alert("clicked");#}
+{#            var imgSrc = document.getElementsByName("tryimg");#}
+{#            var hrc = document.getElementsByName("myimage");#}
+{#            var reader  = new FileReader();#}
+{#            reader.readAsDataURL('https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg');#}
+{#            hrc[0].value = imgSrc[0].getAttribute("src");#}
+{#            hrc[0].value = reader.result;#}
+{#            alert(hrc[0].value);#}
+
+{#            var a = $("<a>").attr("href", "https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg").attr("download", "max.jpg").appendTo("body");#}
+
+            a[0].click();
+
+            a.remove();
+        }
+
+       $("#paste").load(function() {
+  document.getElementById('load').style.display = 'none';
+});
+
+
+
+         $(window).load(function(e) {
+             $('.gsc-search-button').hide();
+             $('.gsc-input').hide();
+
+             //GeoLocation Code to find the LatLong
+            if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+            }
+              function showPosition(position) {
+                     latlng = position.coords.latitude+":"+position.coords.longitude;
+                     //alert(latlng);
+                     addLocation(position.coords.latitude,position.coords.longitude);
+                     //alert(document.getElementById('location').innerHTML);
+                }
+                function addLocation(lat,lng){
+                    document.getElementById('lat').innerHTML = lat;
+                    document.getElementById('lng').innerHTML = lng;
+                }
+        });
+    </script>
+</html>
+
